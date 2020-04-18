@@ -1,4 +1,10 @@
 ## 配套设备配对
+[Android 蓝牙技术（一）- 经典蓝牙](bluetooth_a.md)
+
+[Android 蓝牙技术（二）- 低功耗蓝牙](bluetooth_b.md)
+
+[配套设备配对](bluetooth_c.md)
+
 Google 官方为什么要提供 Companion device 相关的 API 呢？
 
 一般情况下，手机或平板要连接外围设备的话大概的流程是：

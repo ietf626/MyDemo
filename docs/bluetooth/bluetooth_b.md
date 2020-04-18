@@ -1,4 +1,10 @@
 ## Android 蓝牙技术（二）- 低功耗蓝牙
+[Android 蓝牙技术（一）- 经典蓝牙](bluetooth_a.md)
+
+[Android 蓝牙技术（二）- 低功耗蓝牙](bluetooth_b.md)
+
+[配套设备配对](bluetooth_c.md)
+
 Android 4.3（API 级别 18）开始内置支持。与传统蓝牙不同，蓝牙低功耗 (BLE) 旨在提供显著降低的功耗。这使 Android 应用可与功率要求更严格的 BLE 设备（例如近程传感器、心率监测仪和健身设备）通信。
 
 ###  使用场景有：
