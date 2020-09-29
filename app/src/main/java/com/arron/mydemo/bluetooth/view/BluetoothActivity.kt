@@ -568,7 +568,27 @@ class BluetoothActivity : AppCompatActivity() {
             log(TAG, "低功耗扫描失败, errorCode:$errorCode")
         }
     }
-
+    private val leScanCallback2 = object : BluetoothAdapter.LeScanCallback{
+        override fun onLeScan(d: BluetoothDevice?, rssi: Int, scanRecord: ByteArray?) {
+            d?:return
+            val device = d
+            log(TAG, "低功耗扫描到设备：${device.name} MAC:${device.address}")
+            if (TextUtils.isEmpty(device.name))
+                return
+            runOnUiThread {
+                val bean = BluetoothDeviceBean(
+                    device.name,
+                    device.address,
+                    device.bondState == BluetoothDevice.BOND_BONDED,
+                    device
+                )
+                if (mAdapter.data.contains(bean))
+                    return@runOnUiThread
+                mAdapter.data.add(bean)
+                mAdapter.notifyDataSetChanged()
+            }
+        }
+    }
     //开始低功耗蓝牙扫描
     private fun scanLeDevice(enable: Boolean) {
         when (enable) {
@@ -582,6 +602,7 @@ class BluetoothActivity : AppCompatActivity() {
                 mAdapter.data.clear()
                 mAdapter.notifyDataSetChanged()
                 mBluetoothAdapter?.bluetoothLeScanner?.startScan(leScanCallback)
+//                mBluetoothAdapter?.startLeScan(leScanCallback2)
             }
             else -> {
                 mScanning = false
